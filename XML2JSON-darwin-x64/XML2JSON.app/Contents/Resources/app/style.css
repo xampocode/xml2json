@@ -1,0 +1,23 @@
+body {
+  font-family: monospace;
+  background-color: #1e1e1e;
+  color: #dcdcdc;
+  padding: 20px;
+}
+pre {
+  background: #252526;
+  padding: 20px;
+  border-radius: 10px;
+  white-space: pre-wrap;
+}
+button {
+  margin: 10px 0;
+  padding: 6px 12px;
+  background: #444;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+input[type="file"] {
+  margin: 10px 0;
+}

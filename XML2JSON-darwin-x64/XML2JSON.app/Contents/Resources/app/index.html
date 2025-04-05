@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>XML2JSON</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>XML2JSON</h1>
+
+  <input type="file" id="fileInput" accept=".xml">
+  <button id="exportBtn">Export JSON</button>
+
+  <pre id="output">Select an XML file to see the JSON...</pre>
+  <button id="checkUpdatesBtn">Check for Updates</button>
+  <div id="version" style="text-align: center; color: gray; margin-top: 1rem; font-size: 0.9rem;"></div>
+  <!-- 📦 Version display (populated by renderer.js) -->
+  <div id="version" style="text-align: center; color: gray; margin-top: 1rem; font-size: 0.9rem;"></div>
+
+  <!-- 🚀 Load renderer logic AFTER DOM is loaded -->
+  <script src="renderer.js"></script>
+</body>
+</html>

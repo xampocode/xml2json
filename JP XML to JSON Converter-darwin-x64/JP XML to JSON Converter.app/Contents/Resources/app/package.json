@@ -1,0 +1,14 @@
+{
+  "name": "jp-xml-to-json-converter",
+  "version": "1.0.4",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "package": "npm version patch && electron-packager . 'JP XML to JSON Converter' --platform=darwin --arch=x64 --overwrite --icon=icon.icns",
+    "dmg": "appdmg appdmg.json JP-XML-Converter-v$(node -p \"require('./package.json').version\").dmg"
+  },
+  "devDependencies": {
+    "electron": "^28.1.0",
+    "electron-packager": "^17.1.2"
+  }
+}

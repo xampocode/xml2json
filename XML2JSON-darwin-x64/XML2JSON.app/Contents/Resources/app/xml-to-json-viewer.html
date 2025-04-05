@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>XML to JSON Viewer (With Syntax Highlighting)</title>
+  <style>
+    body {
+      font-family: monospace;
+      background-color: #1e1e1e;
+      color: #dcdcdc;
+      padding: 20px;
+    }
+
+    input[type="file"] {
+      margin-bottom: 20px;
+    }
+
+    pre {
+      background: #252526;
+      padding: 20px;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      border-radius: 10px;
+    }
+
+    .string { color: #CE9178; }
+    .number { color: #B5CEA8; }
+    .boolean { color: #569CD6; }
+    .null { color: #569CD6; font-style: italic; }
+    .key { color: #9CDCFE; }
+  </style>
+</head>
+<body>
+  <h1>🛠 XML to JSON Viewer</h1>
+  <input type="file" id="fileInput" accept=".xml"/>
+  <pre id="output">Select an XML file to see the JSON...</pre>
+
+  <script>
+    document.getElementById('fileInput').addEventListener('change', function (e) {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function (event) {
+        const xmlStr = event.target.result;
+        const parser = new DOMParser();
+        const xml = parser.parseFromString(xmlStr, "application/xml");
+
+        function xmlToJson(xml) {
+          const obj = {};
+          if (xml.nodeType === 1) {
+            if (xml.attributes.length > 0) {
+              obj["@attributes"] = {};
+              for (let j = 0; j < xml.attributes.length; j++) {
+                const attribute = xml.attributes.item(j);
+                obj["@attributes"][attribute.nodeName] = attribute.nodeValue;
+              }
+            }
+          } else if (xml.nodeType === 3) {
+            return xml.nodeValue.trim();
+          }
+
+          if (xml.hasChildNodes()) {
+            for (let i = 0; i < xml.childNodes.length; i++) {
+              const item = xml.childNodes.item(i);
+              const nodeName = item.nodeName;
+              const value = xmlToJson(item);
+              if (typeof value === "string" && value === "") continue;
+              if (!obj[nodeName]) {
+                obj[nodeName] = value;
+              } else {
+                if (!Array.isArray(obj[nodeName])) {
+                  obj[nodeName] = [obj[nodeName]];
+                }
+                obj[nodeName].push(value);
+              }
+            }
+          }
+
+          return obj;
+        }
+
+        function syntaxHighlight(json) {
+          if (typeof json !== "string") {
+            json = JSON.stringify(json, null, 2);
+          }
+          json = json.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+          return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(\.\d*)?([eE][+\-]?\d+)?)/g, function (match) {
+            let cls = 'number';
+            if (/^"/.test(match)) {
+              if (/:$/.test(match)) {
+                cls = 'key';
+              } else {
+                cls = 'string';
+              }
+            } else if (/true|false/.test(match)) {
+              cls = 'boolean';
+            } else if (/null/.test(match)) {
+              cls = 'null';
+            }
+            return '<span class="' + cls + '">' + match + '</span>';
+          });
+        }
+
+        const jsonResult = xmlToJson(xml.documentElement);
+        document.getElementById('output').innerHTML = syntaxHighlight(jsonResult);
+      };
+
+      reader.readAsText(file);
+    });
+  </script>
+</body>
+</html>
