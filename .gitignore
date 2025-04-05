@@ -1,0 +1,15 @@
+# Electron output
+dist/
+out/
+*.dmg
+*.zip
+*.log
+
+# Node
+node_modules/
+
+# OS
+.DS_Store
+
+# Electron packaged apps
+*-darwin-*/

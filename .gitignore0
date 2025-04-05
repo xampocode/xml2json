@@ -1,0 +1,15 @@
+# Prevent pushing massive files
+*.dmg
+*.zip
+*.log
+
+# Ignore Electron build outputs
+/dist
+/out
+/node_modules
+/packages/*/node_modules
+/packages/*/dist
+
+# Ignore local environment
+.env
+.DS_Store
