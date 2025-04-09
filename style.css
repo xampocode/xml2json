@@ -1,23 +1,113 @@
+
 body {
-  font-family: monospace;
-  background-color: #1e1e1e;
-  color: #dcdcdc;
-  padding: 20px;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #1c1c1e;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
-pre {
-  background: #252526;
-  padding: 20px;
-  border-radius: 10px;
-  white-space: pre-wrap;
+
+.app-container {
+  background: #2c2c2e;
+  border-radius: 24px;
+  padding: 2rem;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
+  text-align: center;
 }
+
+h1 {
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: #fff;
+  margin-bottom: 1.5rem;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.custom-file-upload {
+  background-color: #1c1c1e;
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 12px;
+  cursor: pointer;
+  display: inline-block;
+  transition: background 0.2s;
+}
+
+.custom-file-upload:hover {
+  background-color: #30d158; /* Apple-style green hover */
+}
+
+.custom-file-upload input[type="file"] {
+  display: none;
+}
+
 button {
-  margin: 10px 0;
-  padding: 6px 12px;
-  background: #444;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+#exportBtn {
+  background-color: #ff9500;
+  color: #fff;
+}
+
+#updateBtn {
+  background-color: #ff9500;
+  color: #fff;
+  margin-top: 1.5rem;
+}
+
+#closeBtn {
+  background-color: #1c1c1e;
   color: white;
   border: none;
+  padding: 10px 18px;
+  font-size: 15px;
+  border-radius: 8px;
+  margin-top: 0.5rem;
   cursor: pointer;
+  transition: background 0.2s;
 }
-input[type="file"] {
-  margin: 10px 0;
+
+#closeBtn:hover {
+  background-color: #ff3b30;
+}
+
+pre#output {
+  background-color: #3a3a3c;
+  color: #f0f0f0;
+  padding: 1rem;
+  text-align: left;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  line-height: 1.4;
+  max-height: 220px;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+#version {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #aaa;
 }

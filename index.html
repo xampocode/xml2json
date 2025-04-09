@@ -6,18 +6,24 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>XML2JSON</h1>
+  <div class="app-container">
+    <h1>XML2JSON</h1>
 
-  <input type="file" id="fileInput" accept=".xml">
-  <button id="exportBtn">Export JSON</button>
+    <div class="buttons">
+      <label class="custom-file-upload">
+        <input type="file" id="fileInput" accept=".xml">
+        Choose XML
+      </label>
+      <button id="exportBtn">Export JSON</button>
+    </div>
 
-  <pre id="output">Select an XML file to see the JSON...</pre>
-  <button id="checkUpdatesBtn">Check for Updates</button>
-  <div id="version" style="text-align: center; color: gray; margin-top: 1rem; font-size: 0.9rem;"></div>
-  <!-- 📦 Version display (populated by renderer.js) -->
-  <div id="version" style="text-align: center; color: gray; margin-top: 1rem; font-size: 0.9rem;"></div>
+    <pre id="output">Select an XML file to see the JSON….</pre>
 
-  <!-- 🚀 Load renderer logic AFTER DOM is loaded -->
+    <button id="updateBtn">Check for Updates</button>
+<button id="closeBtn">Close App</button>
+<div id="version">XML2JSON v1.0.5</div>
+  </div>
+
   <script src="renderer.js"></script>
 </body>
 </html>

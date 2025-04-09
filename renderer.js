@@ -117,5 +117,13 @@ checkUpdatesBtn.addEventListener('click', () => {
     if (result.response === 0) {
       require('@electron/remote').shell.openExternal('https://github.com/your-repo/releases');
     }
+    // 🔘 Close App button
+const closeBtn = document.getElementById('closeBtn');
+if (closeBtn) {
+  closeBtn.addEventListener('click', () => {
+    const win = require('@electron/remote').getCurrentWindow();
+    win.close();
+  });
+}
   });
 });
