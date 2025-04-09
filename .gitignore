@@ -1,15 +1,33 @@
-# Electron output
+# Node modules and build output
+node_modules/
 dist/
 out/
-*.dmg
-*.zip
-*.log
 
-# Node
-node_modules/
-
-# OS
+# macOS system files
 .DS_Store
 
-# Electron packaged apps
-*-darwin-*/
+# App builds
+*.dmg
+*.pkg
+*.zip
+
+# Logs and temp
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# VS Code settings (optional)
+.vscode/
+
+# Electron specific
+*.asar
+*.icns
+
+# OS metadata
+Icon?
+
+# Cache
+.cache/
+
+# Others
+*.log
